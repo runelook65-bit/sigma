@@ -1,0 +1,26 @@
+{
+  "bundle_id": "sigma-starter-v1",
+  "repository": "runelook65-bit/sigma",
+  "upstream": "SigmaHQ/sigma",
+  "source_commit": "b4ba1f2ae16fbc0af92e7ae96364aac95bdf55b6",
+  "license": "DRL-1.1",
+  "license_url": "https://github.com/SigmaHQ/Detection-Rule-License/blob/main/LICENSE.Detection.Rules.md",
+  "rules": [
+    {
+      "path": "rules/windows/process_creation/proc_creation_win_certutil_download.yml",
+      "file": "proc_creation_win_certutil_download.yml",
+      "id": "19b08b1c-861d-4e75-a1ef-ea0c1baf202b",
+      "title": "Certutil ile şüpheli indirme",
+      "reason": "Certutil süreç kimliği, indirme parametresi ve http ifadesi birlikte eşleşti. Bu, içeriğin zararlı olduğunu kanıtlamaz.",
+      "action": "İşlemin yetkili olup olmadığını, indirme adresini ve dosyanın kaynağını doğrula."
+    },
+    {
+      "path": "rules/windows/process_creation/proc_creation_win_mshta_http.yml",
+      "file": "proc_creation_win_mshta_http.yml",
+      "id": "b98d0db6-511d-45de-ad02-e82a98729620",
+      "title": "Mshta ile uzak içerik çalıştırma işareti",
+      "reason": "Mshta süreç kimliği ile HTTP, HTTPS veya FTP adresi aynı kayıtta eşleşti. Çalıştırmanın sonucu bu kayıttan doğrulanamaz.",
+      "action": "Üst süreci, uzak adresi ve yetkili kullanım bağlamını incele; içeriği çalıştırmadan doğrula."
+    }
+  ]
+}
